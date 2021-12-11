@@ -1,10 +1,12 @@
 package main
+
 import (
- "fmt"
- "log"
- "os"
- "path/filepath"
+	"fmt"
+	"log"
+	"os"
+	"path/filepath"
 )
+
 func main() {
 	var root string
 	if len(os.Args) == 1 {
@@ -16,21 +18,22 @@ func main() {
 		return
 	}
 	// filepath.Walk
+	fmt.Println("Scanning path: ", root)
 	files, err := FilePathWalkDir(root)
 	if err != nil {
 		panic(err)
 	}
-	for _, file := range files{
+	for _, file := range files {
 		fmt.Println(file)
-		}
 	}
-	func FilePathWalkDir(root string) ([]string, error) {
-		var files []string
-		err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+}
+func FilePathWalkDir(root string) ([]string, error) {
+	var files []string
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			files = append(files, path)
 		}
 		return nil
-		})
-		return files, err
-	}
+	})
+	return files, err
+}
