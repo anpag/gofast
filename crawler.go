@@ -34,7 +34,7 @@ func FilePathWalkDir(root string) ([]string, error) {
 		if !info.IsDir() {
 			files = append(files, path)
 		}
-		return err
+		return nil
 
 	})
 	return files, err
