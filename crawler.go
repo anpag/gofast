@@ -21,7 +21,7 @@ func main() {
 	fmt.Println("Scanning path: ", root)
 	files, err := FilePathWalkDir(root)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	for _, file := range files {
 		fmt.Println(file)
