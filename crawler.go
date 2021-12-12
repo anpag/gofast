@@ -23,9 +23,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	for _, file := range files {
-		fmt.Println(file)
-	}
+	// for _, file := range files {
+	// 	fmt.Println(file)
+	// }
 	fmt.Println("Total files scanned:", len(files))
 }
 func FilePathWalkDir(root string) ([]string, error) {
@@ -34,7 +34,7 @@ func FilePathWalkDir(root string) ([]string, error) {
 		if err != nil {
 			fmt.Println(err)
 		} else {    
-			fmt.Printf("%s with %d bytes\n", path,info.Size())
+			files = append(files, path)
 		}
 		return nil
 
