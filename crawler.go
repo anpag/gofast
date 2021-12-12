@@ -31,8 +31,10 @@ func main() {
 func FilePathWalkDir(root string) ([]string, error) {
 	var files []string
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if !info.IsDir() {
-			files = append(files, path)
+		if err != nil {
+			fmt.Println(err)
+		} else {    
+			fmt.Printf("%s with %d bytes\n", path,info.Size())
 		}
 		return nil
 
